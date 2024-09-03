@@ -4,7 +4,7 @@ import Collapsable_card from "../components/Collapsable_card";
 import Timeline from "../components/Timeline";
 const Prediction_page = () => {
   return (
-    <main className="bg-[#1D1D1F] h-screen px-4 pt-20">
+    <main className="bg-[#1D1D1F] px-4 py-20">
       <h1 className="text-white text-4xl font-bold oldenburg-regular">
         Travel Assistant
       </h1>

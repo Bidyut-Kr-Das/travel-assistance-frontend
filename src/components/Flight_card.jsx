@@ -27,7 +27,7 @@ const Flight_card = ({
         <span className="w-36 text-sm lowercase flex-grow text-center relative">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full border-t border-dashed border-white/30"></div>
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-[#45EA69] absolute"
               fill="none"
@@ -40,7 +40,7 @@ const Flight_card = ({
                 strokeWidth={2}
                 d="M5 13l4 4L19 7"
               />
-            </svg>
+            </svg> */}
           </div>
           <span className="absolute left-0 right-0 top-6 text-[#45EA69] font-medium">
             {duration || "N/A"}

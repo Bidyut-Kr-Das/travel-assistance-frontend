@@ -45,8 +45,8 @@ const TimelineItem = ({
             {!description || "Click to view the airlines"}
           </p>
           <section
-            style={{ height: isOpen ? "200px" : "0px" }}
-            className="content"
+            style={{ height: isOpen ? "auto" : "0px" }}
+            className="content flex flex-col gap-4"
           >
             {children}
           </section>
@@ -64,13 +64,38 @@ const Timeline = ({ items }) => (
       description={`Click the arrow to see the flights`}
       enableButton={true}
     >
-      <Flight_card />
+      <Flight_card
+        source_city="Mumbai"
+        destination_city="Delhi"
+        departure_time="12:00"
+        flight_no="AI-101"
+        duration={`2.14 hr`}
+        airline="Air India"
+        price="4500"
+      />
+      <Flight_card
+        source_city="Mumbai"
+        destination_city="Delhi"
+        departure_time="12:00"
+        flight_no="AI-101"
+        duration={`2.14 hr`}
+        airline="Air India"
+        price="4500"
+      />
+      <Flight_card
+        source_city="Mumbai"
+        destination_city="Delhi"
+        departure_time="12:00"
+        flight_no="AI-101"
+        duration={`2.14 hr`}
+        airline="Air India"
+        price="4500"
+      />
     </TimelineItem>
     <TimelineItem
       section_name={`Prediction`}
       title="Top 3 Predicted flight"
       description={`Click the arrow to see the flights`}
-      enableButton={true}
     >
       <Flight_card />
     </TimelineItem>
