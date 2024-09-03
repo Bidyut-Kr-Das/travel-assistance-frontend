@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiCalendar, FiClock } from "react-icons/fi";
 import { FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import DatePicker from "react-datepicker";
@@ -21,11 +21,48 @@ const LandingPage = () => {
   });
 
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
+  const [sourceSuggestions, setSourceSuggestions] = useState([]);
+  const [destSuggestions, setDestSuggestions] = useState([]);
+  const [showSourceSuggestions, setShowSourceSuggestions] = useState(false);
+  const [showDestSuggestions, setShowDestSuggestions] = useState(false);
+
+  const sourceRef = useRef(null);
+  const destRef = useRef(null);
+
+  const states = [
+    "Kolkata",
+    "Mumbai",
+    "Delhi",
+    "Chennai",
+    "Bangalore",
+    "Hyderabad",
+    "Pune",
+    "Ahmedabad",
+    "Jaipur",
+    "Lucknow",
+    "Chandigarh",
+    "Bhopal",
+  ];
 
   useEffect(() => {
-    // Trigger the background transition after a short delay
     const timer = setTimeout(() => setBackgroundLoaded(true), 500);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sourceRef.current && !sourceRef.current.contains(event.target)) {
+        setShowSourceSuggestions(false);
+      }
+      if (destRef.current && !destRef.current.contains(event.target)) {
+        setShowDestSuggestions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const fadeIn = {
@@ -33,7 +70,6 @@ const LandingPage = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  //method to send the data to server(flask)
   const sendData = async () => {
     const response = await apiKey.post("/predict", {
       source_city: form.source,
@@ -47,6 +83,35 @@ const LandingPage = () => {
     console.log(response);
   };
 
+  const handleSourceChange = (e) => {
+    const value = e.target.value;
+    setForm({ ...form, source: value });
+    const filteredSuggestions = states.filter((state) =>
+      state.toLowerCase().startsWith(value.toLowerCase())
+    );
+    setSourceSuggestions(filteredSuggestions);
+    setShowSourceSuggestions(true);
+  };
+
+  const handleDestChange = (e) => {
+    const value = e.target.value;
+    setForm({ ...form, destination: value });
+    const filteredSuggestions = states.filter((state) =>
+      state.toLowerCase().startsWith(value.toLowerCase())
+    );
+    setDestSuggestions(filteredSuggestions);
+    setShowDestSuggestions(true);
+  };
+
+  const handleSuggestionClick = (suggestion, field) => {
+    setForm({ ...form, [field]: suggestion });
+    if (field === "source") {
+      setShowSourceSuggestions(false);
+    } else {
+      setShowDestSuggestions(false);
+    }
+  };
+
   return (
     <div
       className={`min-h-screen flex flex-col items-center justify-center px-4 py-8 overflow-hidden transition-all duration-2000 ease-in-out ${
@@ -58,7 +123,6 @@ const LandingPage = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          // console.log(form);
           toast.promise(sendData, {
             loading: "Predicting...",
             success: "Prediction Successful",
@@ -71,7 +135,7 @@ const LandingPage = () => {
           initial="hidden"
           animate="visible"
           variants={fadeIn}
-          transition={{ duration: 0.5, delay: 1 }} // Delay the content fade-in
+          transition={{ duration: 0.5, delay: 1 }}
         >
           <motion.h1
             className="text-4xl font-bold mb-8 text-center text-blue-300"
@@ -92,6 +156,7 @@ const LandingPage = () => {
                 className="relative"
                 variants={fadeIn}
                 transition={{ duration: 0.3, delay: 1.6 }}
+                ref={sourceRef}
               >
                 <label
                   htmlFor="from"
@@ -105,19 +170,40 @@ const LandingPage = () => {
                     id="from"
                     type="text"
                     value={form.source}
-                    onChange={(e) =>
-                      setForm({ ...form, source: e.target.value })
-                    }
+                    onChange={handleSourceChange}
                     placeholder="Enter origin"
                     className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
                   />
                 </div>
+                {showSourceSuggestions && sourceSuggestions.length > 0 && (
+                  <ul
+                    className="absolute z-10 w-full bg-gray-700 mt-1 rounded-lg shadow-lg overflow-y-auto"
+                    style={{
+                      maxHeight: "150px",
+                      width: "100%",
+                      scrollbarWidth: "thin",
+                    }}
+                  >
+                    {sourceSuggestions.map((suggestion, index) => (
+                      <li
+                        key={index}
+                        className="px-4 py-2 hover:bg-gray-600 cursor-pointer text-white"
+                        onClick={() =>
+                          handleSuggestionClick(suggestion, "source")
+                        }
+                      >
+                        {suggestion}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
               {/* To Input */}
               <motion.div
                 className="relative"
                 variants={fadeIn}
                 transition={{ duration: 0.3, delay: 1.8 }}
+                ref={destRef}
               >
                 <label
                   htmlFor="to"
@@ -131,13 +217,33 @@ const LandingPage = () => {
                     id="to"
                     type="text"
                     value={form.destination}
-                    onChange={(e) =>
-                      setForm({ ...form, destination: e.target.value })
-                    }
+                    onChange={handleDestChange}
                     placeholder="Enter destination"
                     className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
                   />
                 </div>
+                {showDestSuggestions && destSuggestions.length > 0 && (
+                  <ul
+                    className="absolute z-10 w-full bg-gray-700 mt-1 rounded-lg shadow-lg overflow-y-auto"
+                    style={{
+                      maxHeight: "150px",
+                      width: "100%",
+                      scrollbarWidth: "thin",
+                    }}
+                  >
+                    {destSuggestions.map((suggestion, index) => (
+                      <li
+                        key={index}
+                        className="px-4 py-2 hover:bg-gray-600 cursor-pointer text-white"
+                        onClick={() =>
+                          handleSuggestionClick(suggestion, "destination")
+                        }
+                      >
+                        {suggestion}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
               {/* Date and Time Pickers */}
               <motion.div
@@ -197,7 +303,7 @@ const LandingPage = () => {
               transition={{ duration: 0.3, delay: 2.2 }}
               type="submit"
             >
-              <span className="relative z-10">Find Best Flights</span>
+              <span className="relative z-auto">Find Best Flights</span>
               <span className="absolute inset-0 h-full w-full bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out"></span>
             </motion.button>
           </motion.div>
