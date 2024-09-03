@@ -15,6 +15,9 @@ const LandingPage = () => {
     destination: "",
     date: null,
     time: "",
+    stops: "zero",
+    class: "Economy",
+    airline: "Air_India",
   });
 
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
@@ -32,12 +35,16 @@ const LandingPage = () => {
 
   //method to send the data to server(flask)
   const sendData = async () => {
-    await apiKey.post("/predict", {
-      source: form.source,
-      destination: form.destination,
+    const response = await apiKey.post("/predict", {
+      source_city: form.source,
+      destination_city: form.destination,
       date: form.date.toString(),
       time: form.time,
+      stops: form.stops,
+      class: form.class,
+      airline: form.airline,
     });
+    console.log(response);
   };
 
   return (
