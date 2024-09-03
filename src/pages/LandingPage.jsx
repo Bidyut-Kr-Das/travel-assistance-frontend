@@ -303,7 +303,9 @@ const LandingPage = () => {
               transition={{ duration: 0.3, delay: 2.2 }}
               type="submit"
             >
-              <span className="relative z-auto">Find Best Flights</span>
+              <span className="relative group-hover:z-10 z-auto">
+                Find Best Flights
+              </span>
               <span className="absolute inset-0 h-full w-full bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out"></span>
             </motion.button>
           </motion.div>
