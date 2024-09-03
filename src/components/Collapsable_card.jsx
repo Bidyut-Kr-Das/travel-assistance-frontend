@@ -2,9 +2,10 @@ import React, { useState } from "react";
 
 const Collapsable_card = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <section>
-      <h1>Heading section </h1>
+      <h1>Heading section</h1>
       <button
         onClick={() => {
           setIsOpen((prev) => {
