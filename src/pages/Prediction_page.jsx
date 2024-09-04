@@ -6,7 +6,7 @@ import StarryBackground from "./StarryBackground.jsx";
 const Prediction_page = () => {
   return (
     <>
-      <StarryBackground className="absolute inset-0 z-0" />
+      <StarryBackground className="sticky inset-0 z-0 top-0 left-0" />
       <main className=" px-4 py-20 z-10 relative">
         <h1 className="text-white text-4xl font-bold oldenburg-regular">
           Travel Assistant

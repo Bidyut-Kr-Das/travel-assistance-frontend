@@ -11,7 +11,7 @@ const TimelineItem = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex backdrop-blur-xl">
+    <div className="flex ">
       <div
         className={`flex flex-col items-center ${
           section_name ? "mr-4" : "mr-5 ml-1"
