@@ -134,7 +134,7 @@ const LandingPage = () => {
             transition={{ duration: 0.5, delay: 1 }}
           >
             <motion.h1
-              className="text-4xl font-bold mb-8 text-center text-white animate-pulse"
+              className="text-4xl font-bold mb-8 text-center text-white animate-pulse oldenburg-regular"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 1.2 }}

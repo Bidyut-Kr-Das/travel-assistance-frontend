@@ -2,7 +2,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
-
+import ThreeD from "./pages/ThreeD.jsx";
 //page import
 import LandingPage from "./pages/LandingPage";
 
@@ -16,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/prediction" element={<Prediction_page />} />
+        <Route path="/Testing" element={<ThreeD />} />
         <Route path="/Flight_card" element={<Flight_card />} />
         <Route path="*" element={<h1>You are not worthy</h1>} />
       </Routes>
