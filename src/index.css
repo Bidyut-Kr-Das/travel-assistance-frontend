@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Oldenburg&display=swap');
-
 .oldenburg-regular {
   font-family: "Oldenburg", serif;
   font-weight: 400;

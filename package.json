@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.6",
     "axios": "^1.7.7",
     "framer-motion": "^11.3.31",
     "react": "^18.3.1",
@@ -19,7 +21,8 @@
     "react-router-dom": "^6.26.1",
     "react-time-picker": "^7.0.0",
     "sonner": "^1.5.0",
-    "sooner": "^1.1.4"
+    "sooner": "^1.1.4",
+    "three": "^0.168.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
