@@ -11,18 +11,24 @@ const TimelineItem = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex">
-      <div className="flex flex-col items-center mr-4">
-        <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
-        {!isLast && <div className="w-1 h-full bg-gray-300"></div>}
+    <div className="flex backdrop-blur-xl">
+      <div
+        className={`flex flex-col items-center ${
+          section_name ? "mr-4" : "mr-5 ml-1"
+        }`}
+      >
+        {section_name && (
+          <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+        )}
+        {!isLast && (
+          <div className="w-1 h-full bg-gray-300 !overflow-hidden"></div>
+        )}
       </div>
-      <div className="pb-8">
+      <div className="pb-8 w-[90%]">
         <p className="text-sm text-gray-500 mb-2">{section_name}</p>
         <div className="bg-white rounded-lg shadow p-4 mb-2">
-          <div className="flex justify-between w-full">
-            <h3 className="font-semibold">
-              {title || "This is title section"}
-            </h3>
+          <div className="flex justify-between">
+            <h3 className="font-bold">{title || "This is title section"}</h3>
             {enableButton && (
               <button
                 onClick={() => {
@@ -41,12 +47,14 @@ const TimelineItem = ({
               </button>
             )}
           </div>
-          <p className="text-sm text-gray-500">
-            {!description || "Click to view the airlines"}
+          <p className="text-sm text-gray-500 ">
+            {description || "Click to view the airlines"}
           </p>
           <section
-            style={{ height: isOpen ? "auto" : "0px" }}
-            className="content flex flex-col gap-4"
+            style={{ height: isOpen ? "30rem" : "0px" }}
+            className={`content grid grid-cols-1  gap-4 overflow-auto ${
+              isOpen ? "py-4" : "py-0"
+            }`}
           >
             {children}
           </section>
@@ -60,36 +68,24 @@ const Timeline = ({ items }) => (
   <>
     <TimelineItem
       section_name={`Prediction`}
-      title="Top 3 Predicted flight"
-      description={`Click the arrow to see the flights`}
+      title={`Predicted Flight Fare is ${"4000"} per person`}
+      description="This is a predicted flight fare after analyzing history data original fare may vary"
+    ></TimelineItem>
+
+    <TimelineItem
+      title={`Predicted Flight Delay is ${"40"} mins`}
+      description="This is a predicted delay after analyzing history data original delay may vary. "
+    ></TimelineItem>
+
+    <TimelineItem
+      title="Predicted Top 3 Flights "
+      description="Click the arrow to see the flights"
       enableButton={true}
     >
       <Flight_card
-        source_city="Mumbai"
-        destination_city="Delhi"
-        departure_time="12:00"
-        flight_no="AI-101"
-        duration={`2.14 hr`}
-        airline="Air India"
-        price="4500"
-      />
-      <Flight_card
-        source_city="Mumbai"
-        destination_city="Delhi"
-        departure_time="12:00"
-        flight_no="AI-101"
-        duration={`2.14 hr`}
-        airline="Air India"
-        price="4500"
-      />
-      <Flight_card
-        source_city="Mumbai"
-        destination_city="Delhi"
-        departure_time="12:00"
-        flight_no="AI-101"
-        duration={`2.14 hr`}
-        airline="Air India"
-        price="4500"
+        airline={"Air India"}
+        source_city={"Delhi"}
+        destination_city={"Mumbai"}
       />
     </TimelineItem>
     <TimelineItem
