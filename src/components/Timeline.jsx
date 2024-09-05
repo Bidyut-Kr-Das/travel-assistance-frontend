@@ -103,7 +103,7 @@ const Timeline = ({ data }) => {
         description="Click the arrow to see the flights"
         enableButton={true}
       >
-        {data.flights.map((element, index) => (
+        {/* {data.flights.map((element, index) => (
           <Flight_card
             key={index}
             airline={element.airline}
@@ -114,7 +114,7 @@ const Timeline = ({ data }) => {
             flight_no={element.flight_number}
             price={element.price}
           />
-        )) || "No data available"}
+        )) || "No data available"} */}
       </TimelineItem>
       <TimelineItem
         section_name={`Assistance`}
