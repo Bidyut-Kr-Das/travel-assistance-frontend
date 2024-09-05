@@ -8,11 +8,14 @@ import LandingPage from "./pages/LandingPage";
 
 import Prediction_page from "./pages/Prediction_page";
 import Flight_card from "./components/Flight_card";
+import StarryBackground from "./pages/StarryBackground.jsx";
 
 const App = () => {
   return (
     <main>
       <Toaster richColors position="bottom-center" />
+      <StarryBackground className="sticky inset-0 z-0 top-0 left-0" />
+
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/prediction" element={<Prediction_page />} />

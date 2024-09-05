@@ -5,9 +5,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import StarryBackground from "./StarryBackground.jsx";
 
 import apiKey from "../api/apiKey";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const [form, setForm] = useState({
@@ -28,6 +28,8 @@ const LandingPage = () => {
 
   const sourceRef = useRef(null);
   const destRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const states = [
     "Kolkata",
@@ -80,7 +82,7 @@ const LandingPage = () => {
       class: form.class,
       airline: form.airline,
     });
-    console.log(response);
+    navigate("/prediction", { state: response.data });
   };
 
   const handleSourceChange = (e) => {
@@ -114,7 +116,6 @@ const LandingPage = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <StarryBackground className="absolute inset-0 z-0" />
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8 transition-all duration-2000 ease-in-out">
         <form
           onSubmit={(e) => {

@@ -1,18 +1,20 @@
-import React from "react";
-import Flight_card from "../components/Flight_card";
-import Collapsable_card from "../components/Collapsable_card";
+import React, { useEffect } from "react";
 import Timeline from "../components/Timeline";
-import StarryBackground from "./StarryBackground.jsx";
+import { useLocation } from "react-router-dom";
 const Prediction_page = () => {
+  const location = useLocation();
+
+  const jsonData = location.state;
+  // console.log(jsonData);
+
   return (
     <>
-      <StarryBackground className="sticky inset-0 z-0 top-0 left-0" />
-      <main className=" px-4 py-20 z-10 relative">
+      <main className=" px-4 py-20 z-10 relative h-screen overflow-auto">
         <h1 className="text-white text-4xl font-bold oldenburg-regular">
           Travel Assistant
         </h1>
         {/* <Collapsable_card /> */}
-        <Timeline />
+        <Timeline data={jsonData} />
       </main>
     </>
   );

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Flight_card from "./Flight_card";
+import Collapsable_card from "./Collapsable_card";
 
 const TimelineItem = ({
   section_name,
@@ -7,6 +8,7 @@ const TimelineItem = ({
   description,
   enableButton,
   children,
+  className,
   isLast = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,10 +27,14 @@ const TimelineItem = ({
         )}
       </div>
       <div className="pb-8 w-[90%]">
-        <p className="text-sm text-gray-500 mb-2">{section_name}</p>
-        <div className="bg-white rounded-lg shadow p-4 mb-2">
+        <p className="text-lg text-white animate-pulse  mb-2 -mt-1 ">
+          {section_name}
+        </p>
+        <div className="bg-gray-800 rounded-lg shadow p-4 mb-2">
           <div className="flex justify-between">
-            <h3 className="font-bold">{title || "This is title section"}</h3>
+            <h3 className="font-bold text-white">
+              {title || "This is title section"}
+            </h3>
             {enableButton && (
               <button
                 onClick={() => {
@@ -47,11 +53,11 @@ const TimelineItem = ({
               </button>
             )}
           </div>
-          <p className="text-sm text-gray-500 ">
+          <p className="text-sm text-gray-500 w-[95%]">
             {description || "Click to view the airlines"}
           </p>
           <section
-            style={{ height: isOpen ? "30rem" : "0px" }}
+            style={{ height: isOpen ? className || "30rem" : "0px" }}
             className={`content grid grid-cols-1  gap-4 overflow-auto ${
               isOpen ? "py-4" : "py-0"
             }`}
@@ -64,38 +70,78 @@ const TimelineItem = ({
   );
 };
 
-const Timeline = ({ items }) => (
-  <>
-    <TimelineItem
-      section_name={`Prediction`}
-      title={`Predicted Flight Fare is ${"4000"} per person`}
-      description="This is a predicted flight fare after analyzing history data original fare may vary"
-    ></TimelineItem>
+const Timeline = ({ data }) => {
+  const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
+  useEffect(() => {}, [location]);
 
-    <TimelineItem
-      title={`Predicted Flight Delay is ${"40"} mins`}
-      description="This is a predicted delay after analyzing history data original delay may vary. "
-    ></TimelineItem>
+  const getLocaiton = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    });
+    alert("Location access granted");
+  };
 
-    <TimelineItem
-      title="Predicted Top 3 Flights "
-      description="Click the arrow to see the flights"
-      enableButton={true}
-    >
-      <Flight_card
-        airline={"Air India"}
-        source_city={"Delhi"}
-        destination_city={"Mumbai"}
+  // console.log(data);
+  return (
+    <>
+      <TimelineItem
+        section_name={`Prediction`}
+        title={`Predicted Flight Fare is ${
+          data.predicted_price || "na"
+        } per person`}
+        description="This is a predicted flight fare after analyzing history data original fare may vary"
+      ></TimelineItem>
+
+      <TimelineItem
+        title={`Predicted Flight Delay is ${data.predicted_delay || "na"} mins`}
+        description="This is a predicted delay after analyzing history data original delay may vary. "
+      ></TimelineItem>
+
+      <TimelineItem
+        title="Predicted Top 3 Flights "
+        description="Click the arrow to see the flights"
+        enableButton={true}
+      >
+        {data.flights.map((element, index) => (
+          <Flight_card
+            key={index}
+            airline={element.airline}
+            source_city={element.source_city}
+            destination_city={element.destination_city}
+            departure_time={element.departure_time}
+            duration={element.duration}
+            flight_no={element.flight_number}
+            price={element.price}
+          />
+        )) || "No data available"}
+      </TimelineItem>
+      <TimelineItem
+        section_name={`Assistance`}
+        title="Disclaimer"
+        description={`Please provide further details to provide further assistance. Click the arrow to view the requirements.`}
+        enableButton={true}
+        className="9.5rem"
+      >
+        <ul className="list-disc ml-4 text-sky-600">
+          <li className="list-item">
+            If your ticket is booked, Please provide us details of your flight.
+          </li>
+          <li>
+            Let us access your location for calculating nearest airport distance
+            and time ro reach.
+          </li>
+        </ul>
+      </TimelineItem>
+      <Collapsable_card
+        title={`Allow location access ${location.latitude} ${location.longitude}`}
+        button_name={"Allow"}
+        function_passed={getLocaiton}
       />
-    </TimelineItem>
-    <TimelineItem
-      section_name={`Prediction`}
-      title="Top 3 Predicted flight"
-      description={`Click the arrow to see the flights`}
-    >
-      <Flight_card />
-    </TimelineItem>
-  </>
-);
+    </>
+  );
+};
 
 export default Timeline;

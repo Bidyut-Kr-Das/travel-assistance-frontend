@@ -77,8 +77,8 @@ const Flight_card = ({
           </span>
         </span>
       </div>
-      <div className="absolute top-1/2 -left-3 w-6 h-6 bg-white rounded-full"></div>
-      <div className="absolute top-1/2 -right-3 w-6 h-6 bg-white rounded-full"></div>
+      <div className="absolute top-1/2 -left-3 w-6 h-6 bg-gray-800 rounded-full"></div>
+      <div className="absolute top-1/2 -right-3 w-6 h-6 bg-gray-800 rounded-full"></div>
     </div>
   );
 };

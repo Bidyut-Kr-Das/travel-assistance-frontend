@@ -1,41 +1,47 @@
 import React, { useState } from "react";
 
-const Collapsable_card = () => {
+const Collapsable_card = ({
+  section_name,
+  title,
+  button_name,
+  function_passed,
+  isLast = false,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  
   return (
-    <section>
-      <h1>Heading section</h1>
-      <button
-        onClick={() => {
-          setIsOpen((prev) => {
-            return !prev;
-          });
-        }}
+    <div className="flex ">
+      <div
+        className={`flex flex-col items-center ${
+          section_name ? "mr-4" : "mr-5 ml-1"
+        }`}
       >
-        click
-      </button>
-      <p>Some info</p>
-      <section style={{ height: isOpen ? "200px" : "0px" }} className="content">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt optio et
-        velit, dolorem perspiciatis adipisci facere dolores ex iste natus
-        accusantium quo animi expedita, quasi dignissimos minima nulla,
-        accusamus sapiente! Sint ratione dicta labore. Sit quis dicta officiis
-        quas ea provident voluptatum, perspiciatis dolorum non odio iste ut
-        saepe at nesciunt architecto voluptate rerum vitae dolor alias nulla
-        laborum asperiores. Suscipit ut dolores blanditiis aliquid rem,
-        architecto autem non consequatur commodi veritatis voluptate minus
-        soluta, mollitia doloribus atque in, dolore tempore praesentium illo
-        perferendis ipsa repellat reprehenderit? Eligendi, laboriosam ex.
-        Repudiandae saepe sint temporibus fuga quo repellendus. Animi veniam
-        rerum dicta maiores ab veritatis quis odit blanditiis dolor? Quod porro
-        molestiae, error ratione tempore similique repudiandae sint possimus
-        nemo sapiente. Esse eum magni laborum quasi reiciendis non vel,
-        laboriosam sapiente quae eveniet modi repellat at amet natus vero!
-        Accusamus veritatis ducimus doloremque sequi sint delectus eos officiis
-        dolores vel maiores.
-      </section>
-    </section>
+        {section_name && (
+          <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+        )}
+        {!isLast && (
+          <div className="w-1 h-full bg-gray-300 !overflow-hidden"></div>
+        )}
+      </div>
+      {/* -----Card----- */}
+      <div className="pb-8 w-[90%]">
+        <p className="text-lg text-white animate-pulse  mb-2 -mt-1 ">
+          {section_name}
+        </p>
+        <div className="bg-gray-800 rounded-lg shadow p-4  flex justify-between">
+          <div className="flex justify-center items-center">
+            <h3 className="font-bold text-white">
+              {title || "This is title section"}
+            </h3>
+          </div>
+          <button
+            className="px-4 text-white capitalize border-2 animate-pulse bg-black/30 rounded-md py-1"
+            onClick={function_passed || ""}
+          >
+            {button_name || "yes"}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
