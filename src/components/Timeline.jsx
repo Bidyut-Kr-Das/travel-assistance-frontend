@@ -89,14 +89,12 @@ const Timeline = ({ data }) => {
     <>
       <TimelineItem
         section_name={`Prediction`}
-        title={`Predicted Flight Fare is ${
-          data.predicted_price || "na"
-        } per person`}
+        title={`Predicted Flight Fare is ${"na"} per person`}
         description="This is a predicted flight fare after analyzing history data original fare may vary"
       ></TimelineItem>
 
       <TimelineItem
-        title={`Predicted Flight Delay is ${data.predicted_delay || "na"} mins`}
+        title={`Predicted Flight Delay is ${"na"} mins`}
         description="This is a predicted delay after analyzing history data original delay may vary. "
       ></TimelineItem>
 
