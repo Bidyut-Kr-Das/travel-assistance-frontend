@@ -119,12 +119,13 @@ const LandingPage = () => {
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8 transition-all duration-2000 ease-in-out">
         <form
           onSubmit={(e) => {
-            e.preventDefault();
-            toast.promise(sendData, {
-              loading: "Predicting...",
-              success: "Prediction Successful",
-              error: "Prediction Failed, Cannot connect to the server",
-            });
+            sendData();
+            // e.preventDefault();
+            // toast.promise(sendData, {
+            //   loading: "Predicting...",
+            //   success: "Prediction Successful",
+            //   error: "Prediction Failed, Cannot connect to the server",
+            // });
           }}
         >
           <motion.div
