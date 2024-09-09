@@ -73,15 +73,15 @@ const LandingPage = () => {
   };
 
   const sendData = async () => {
-    // const response = await apiKey.post("/predict", {
-    //   source_city: form.source,
-    //   destination_city: form.destination,
-    //   date: form.date.toString(),
-    //   time: form.time,
-    //   stops: form.stops,
-    //   class: form.class,
-    //   airline: form.airline,
-    // });
+    const response = await apiKey.post("/predict", {
+      source_city: form.source,
+      destination_city: form.destination,
+      date: form.date.toString(),
+      time: form.time,
+      stops: form.stops,
+      class: form.class,
+      airline: form.airline,
+    });
     navigate("/prediction", { state: response.data });
   };
 
@@ -120,12 +120,12 @@ const LandingPage = () => {
         <form
           onSubmit={(e) => {
             sendData();
-            // e.preventDefault();
-            // toast.promise(sendData, {
-            //   loading: "Predicting...",
-            //   success: "Prediction Successful",
-            //   error: "Prediction Failed, Cannot connect to the server",
-            // });
+            e.preventDefault();
+            toast.promise(sendData, {
+              loading: "Predicting...",
+              success: "Prediction Successful",
+              error: "Prediction Failed, Cannot connect to the server",
+            });
           }}
         >
           <motion.div

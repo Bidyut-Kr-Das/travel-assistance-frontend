@@ -147,13 +147,15 @@ const Timeline = ({ data }) => {
       <TimelineItem
         section_name={`Prediction`}
         title={`Approximate Flight Fare is ${
-          data.predicted_price || "na"
+          "na" || data.predicted_price
         } per person`}
         description="This is a approximate flight fare after analyzing history data original fare may vary"
       ></TimelineItem>
 
       <TimelineItem
-        title={`Approximate Flight Delay is ${data.predicted_delay || "na"} mins`}
+        title={`Approximate Flight Delay is ${
+          "na" || data.predicted_delay
+        } mins`}
         description="This is a approximate delay after analyzing history data original delay may vary. "
       ></TimelineItem>
 
@@ -162,18 +164,19 @@ const Timeline = ({ data }) => {
         description="Click the arrow to see the flights"
         enableButton={true}
       >
-        {data.flights.map((element, index) => (
-          <Flight_card
-            key={index}
-            airline={element.airline}
-            source_city={element.source_city}
-            destination_city={element.destination_city}
-            departure_time={element.departure_time}
-            duration={element.duration}
-            flight_no={element.flight_number}
-            price={element.price}
-          />
-        )) || "No data available"}
+        {"No data available" ||
+          data.flights.map((element, index) => (
+            <Flight_card
+              key={index}
+              airline={element.airline}
+              source_city={element.source_city}
+              destination_city={element.destination_city}
+              departure_time={element.departure_time}
+              duration={element.duration}
+              flight_no={element.flight_number}
+              price={element.price}
+            />
+          ))}
       </TimelineItem>
 
       <TimelineItem
