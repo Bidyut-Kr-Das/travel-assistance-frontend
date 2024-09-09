@@ -42,8 +42,8 @@ const Flight_card = ({
               />
             </svg> */}
           </div>
-          <span className="absolute left-0 right-0 top-6 text-[#45EA69] font-medium">
-            {duration || "N/A"}
+          <span className="absolute left-0 right-0 top-8 text-[#45EA69] font-medium">
+            {duration || "N/A"} hrs
           </span>
         </span>
         <span className="flex-grow flex flex-col text-right gap-1">

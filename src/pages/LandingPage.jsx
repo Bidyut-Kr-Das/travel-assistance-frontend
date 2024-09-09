@@ -73,15 +73,15 @@ const LandingPage = () => {
   };
 
   const sendData = async () => {
-    const response = await apiKey.post("/predict", {
-      source_city: form.source,
-      destination_city: form.destination,
-      date: form.date.toString(),
-      time: form.time,
-      stops: form.stops,
-      class: form.class,
-      airline: form.airline,
-    });
+    // const response = await apiKey.post("/predict", {
+    //   source_city: form.source,
+    //   destination_city: form.destination,
+    //   date: form.date.toString(),
+    //   time: form.time,
+    //   stops: form.stops,
+    //   class: form.class,
+    //   airline: form.airline,
+    // });
     navigate("/prediction", { state: response.data });
   };
 
@@ -169,6 +169,7 @@ const LandingPage = () => {
                       onChange={handleSourceChange}
                       placeholder="Enter origin"
                       className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
+                      autoComplete="off"
                     />
                   </div>
                   {showSourceSuggestions && sourceSuggestions.length > 0 && (
@@ -206,6 +207,7 @@ const LandingPage = () => {
                       onChange={handleDestChange}
                       placeholder="Enter destination"
                       className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
+                      autoComplete="off"
                     />
                   </div>
                   {showDestSuggestions && destSuggestions.length > 0 && (

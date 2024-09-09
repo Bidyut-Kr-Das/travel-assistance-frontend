@@ -11,3 +11,13 @@
 .content {
   transition: height 0.5s ease;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
