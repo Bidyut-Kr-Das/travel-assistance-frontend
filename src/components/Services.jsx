@@ -17,7 +17,7 @@ const Services = () => {
       <div className="container">
         <Heading
           title=" Upgrade your journy smoother with NaviFly"
-          text="Navifly unlocks the potential of AI-powered applications"
+          text="Navifly unlocks the potential of ML-powered applications"
         />
 
         <div className="relative">
@@ -35,7 +35,9 @@ const Services = () => {
             <div className="  mt-20 relative z-1 max-w-[17rem] ml-auto">
               <h4 className="h4 mb-2">How to Use NaviFly</h4>
               <p className="body-2 mb-[2rem] text-n-3">
-              Navigating NaviFly is simple and user-friendly. Whether you're planning your next trip or need real-time assistance while traveling
+                Navigating NaviFly is simple and user-friendly. Whether you're
+                planning your next trip or need real-time assistance while
+                traveling
               </p>
               <ul className="body-2">
                 {brainwaveServices.map((item, index) => (
@@ -68,7 +70,11 @@ const Services = () => {
               <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-b from-n-8/0 to-n-8/90 lg:p-15">
                 <h4 className="h4 mb-4"> Our Core Services</h4>
                 <p className="body-2 mb-[3rem] text-n-3">
-                At NaviFly, we provide a wide range of services to enhance your travel experience, ensuring it’s seamless, personalized, and stress-free. Our platform is designed to cater to every aspect of your journey, offering real-time assistance and tailored solutions for your travel needs.
+                  At NaviFly, we provide a wide range of services to enhance
+                  your travel experience, ensuring it’s seamless, personalized,
+                  and stress-free. Our platform is designed to cater to every
+                  aspect of your journey, offering real-time assistance and
+                  tailored solutions for your travel needs.
                 </p>
               </div>
 

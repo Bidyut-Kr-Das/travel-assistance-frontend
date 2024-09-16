@@ -34,7 +34,6 @@ import {
   telegram,
   twitter,
   yourlogo,
-  
 } from "../assets";
 
 export const navigation = [
@@ -210,10 +209,10 @@ export const pricing = [
   {
     id: "0",
     title: "Basic",
-    description: "AI chatbot, personalized recommendations",
+    description: "Personalized recommendations , once a monthly",
     price: "0",
     features: [
-      "An AI chatbot that can understand your queries",
+      "An ML Model that can understand your queries",
       "Personalized recommendations based on your preferences",
       "Ability to explore the app and its features without any cost",
     ],
@@ -221,10 +220,10 @@ export const pricing = [
   {
     id: "1",
     title: "Premium",
-    description: "Advanced AI chatbot, priority support, analytics dashboard",
+    description: "Advanced ML Features, priority support, analytics dashboard",
     price: "9.99",
     features: [
-      "An advanced AI chatbot that can understand complex queries",
+      "An advanced ML Model that can understand complex queries",
       "An analytics dashboard to track your conversations",
       "Priority support to solve issues quickly",
     ],
@@ -232,10 +231,10 @@ export const pricing = [
   {
     id: "2",
     title: "Enterprise",
-    description: "Custom AI chatbot, advanced analytics, dedicated account",
+    description: "Custom ML Features, advanced analytics, dedicated account",
     price: null,
     features: [
-      "An AI chatbot that can understand your queries",
+      "An ML Model that can understand your queries",
       "Personalized recommendations based on your preferences",
       "Ability to explore the app and its features without any cost",
     ],
@@ -267,8 +266,7 @@ export const benefits = [
     backgroundUrl: "./src/assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
-  }
-  
+  },
 ];
 
 export const socials = [

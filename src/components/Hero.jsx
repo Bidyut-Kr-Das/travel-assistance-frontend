@@ -37,8 +37,8 @@ const Hero = () => {
             </span>
           </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            Unleash the power of AI within NaviFly. Upgrade your journy smoother
-            with NaviFly, the open AI travel assistant.
+            Unleash the power of MI within NaviFly. Upgrade your journy smoother
+            with NaviFly, the open MI travel assistant.
           </p>
           <Button onClick={() => navigate("/LandingPage")} white>
             Lets ready for take off

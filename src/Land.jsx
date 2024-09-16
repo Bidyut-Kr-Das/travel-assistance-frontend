@@ -18,7 +18,7 @@ const Land = () => {
         <Collaboration />
         <Services />
         <Pricing />
-        <Roadmap />
+        {/* <Roadmap /> */}
         <Footer />
       </div>
 
