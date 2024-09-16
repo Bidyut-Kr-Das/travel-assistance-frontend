@@ -85,7 +85,7 @@ function ThreeD() {
     };
   }, []);
 
-  return <></>;
+  return;
 }
 
 export default ThreeD;
