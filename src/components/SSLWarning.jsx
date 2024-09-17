@@ -5,7 +5,7 @@ const SSLWarning = () => {
 
   const handleProceed = () => {
     // Open the backend URL in a new tab to let users accept the self-signed certificate
-    window.open('https://your-backend-url:5000', '_blank');
+    window.open('https://ec2-3-108-254-223.ap-south-1.compute.amazonaws.com:5000', '_blank');
     setAccepted(true);
   };
 
@@ -15,8 +15,7 @@ const SSLWarning = () => {
         <div style={styles.warningBox}>
           <h3>Action Required</h3>
           <p>
-            To use this application, please accept the security certificate for
-            our backend server by visiting the following link:
+            To use this application, please accept the security certificate. This security check will only occur one time.
           </p>
           <button style={styles.button} onClick={handleProceed}>
             Proceed to Webpage
