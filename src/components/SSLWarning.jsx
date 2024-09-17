@@ -1,39 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SSLWarning = () => {
   const [accepted, setAccepted] = useState(false);
 
+  // Check if the cookie is present
+  useEffect(() => {
+    const hasAccepted = document.cookie.split(';').some((item) => item.trim().startsWith('sslAccepted='));
+    if (hasAccepted) {
+      setAccepted(true);
+    }
+  }, []);
+
   const handleProceed = () => {
-    // Open the backend URL in a new tab to let users accept the self-signed certificate
-    window.open('https://ec2-3-108-254-223.ap-south-1.compute.amazonaws.com:5000', '_blank');
-    setAccepted(true);
+    // Redirect the user to the backend, where they will accept the certificate and get redirected back
+    window.location.href = 'https://ec2-3-108-254-223.ap-south-1.compute.amazonaws.com:5000';
   };
 
+  // If accepted, do not render anything (component unloads)
+  if (accepted) {
+    return null;
+  }
+
   return (
-    <div>
-      {!accepted ? (
-        <div style={styles.warningBox}>
-          <h3>Action Required</h3>
-          <p>
-            To use this application, please accept the security certificate. This security check will only occur one time.
-          </p>
-          <button style={styles.button} onClick={handleProceed}>
-            Proceed to Webpage
-          </button>
-          <p>
-            After accepting the certificate, return to this page and refresh
-            the browser.
-          </p>
-        </div>
-      ) : (
-        <div style={styles.thankYouBox}>
-          <h3>Thank you!</h3>
-          <p>
-            You can now continue using the app. Please refresh the page after
-            accepting the certificate.
-          </p>
-        </div>
-      )}
+    <div style={styles.warningBox}>
+      <h3>Action Required</h3>
+      <p>
+        To use this application, please accept the security certificate for our backend server.
+        You will be redirected to the backend, and after accepting, you will automatically be brought back here.
+      </p>
+      <button style={styles.button} onClick={handleProceed}>
+        Proceed to Accept Certificate
+      </button>
     </div>
   );
 };
@@ -56,14 +53,6 @@ const styles = {
     borderRadius: '5px',
     cursor: 'pointer',
     marginTop: '10px',
-  },
-  thankYouBox: {
-    padding: '20px',
-    backgroundColor: '#ddffdd',
-    borderRadius: '8px',
-    marginTop: '20px',
-    textAlign: 'center',
-    border: '1px solid #88ff88',
   },
 };
 
