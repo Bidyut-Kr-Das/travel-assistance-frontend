@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import SSLWarning from ../components/SSLWarning;
 
 import apiKey from "../api/apiKey";
 import { useNavigate } from "react-router-dom";
@@ -115,6 +116,8 @@ const LandingPage = () => {
   };
 
   return (
+<>
+    <SSLWarning />
     <div className="relative min-h-screen overflow-hidden">
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8 transition-all duration-2000 ease-in-out">
         <form
@@ -291,6 +294,7 @@ const LandingPage = () => {
         </form>
       </div>
     </div>
+</>
   );
 };
 
