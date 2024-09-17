@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import SSLWarning from ../components/SSLWarning;
+import SSLWarning from "../components/SSLWarning";
 
 import apiKey from "../api/apiKey";
 import { useNavigate } from "react-router-dom";
