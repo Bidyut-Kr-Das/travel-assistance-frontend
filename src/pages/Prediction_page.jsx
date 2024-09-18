@@ -2,38 +2,40 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { heroBackground } from "../assets";
+import Timeline from "../components/Timeline";
 
-const TimelineItem = ({ item }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="mb-8 relative"
-  >
-    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-red-500"></div>
-    <div className="ml-8 p-4 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-xl">
-      <div className="bg-[#0D1425] p-4 rounded-lg">
-        <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-        <p className="text-gray-300">{item.description}</p>
-        {item.time && (
-          <p className="text-sm text-gray-400 mt-2">Time: {item.time}</p>
-        )}
-      </div>
-    </div>
-  </motion.div>
-);
+// const TimelineItem = ({ item }) => (
+//   <motion.div
+//     initial={{ opacity: 0, y: 20 }}
+//     animate={{ opacity: 1, y: 0 }}
+//     transition={{ duration: 0.5 }}
+//     className="mb-8 relative"
+//   >
+//     <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-red-500"></div>
+//     <div className="ml-8 p-4 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-xl">
+//       <div className="bg-[#0D1425] p-4 rounded-lg">
+//         <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+//         <p className="text-gray-300">{item.description}</p>
+//         {item.time && (
+//           <p className="text-sm text-gray-400 mt-2">Time: {item.time}</p>
+//         )}
+//       </div>
+//     </div>
+//   </motion.div>
+// );
 
-const Timeline = ({ data }) => (
-  <div className="space-y-6">
-    {data.map((item, index) => (
-      <TimelineItem key={index} item={item} />
-    ))}
-  </div>
-);
+// const Timeline = ({ data }) => (
+//   <div className="space-y-6">
+//     {data.map((item, index) => (
+//       <TimelineItem key={index} item={item} />
+//     ))}
+//   </div>
+// );
 
 const Prediction_page = () => {
   const location = useLocation();
   const jsonData = location.state;
+  console.log(jsonData);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0B0F19]">
