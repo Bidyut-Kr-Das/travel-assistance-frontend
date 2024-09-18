@@ -10,10 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 // Import new assets (you'll need to create or source these)
 import { heroBackground } from "../assets";
+import Header from "../components/Header";
 
 const LandingPage = () => {
-  // ... (keep all existing state and functions)
-
   const [form, setForm] = useState({
     source: "",
     destination: "",
@@ -117,6 +116,7 @@ const LandingPage = () => {
       setShowDestSuggestions(false);
     }
   };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0B0F19]">
       {/* Background image */}
@@ -128,40 +128,10 @@ const LandingPage = () => {
         />
       </div>
 
-      {/* Floating planets/orbs */}
-      <div className="absolute top-10 left-10 w-4 h-4 bg-red-500 rounded-full opacity-50"></div>
-      <div className="absolute top-1/4 right-1/4 w-8 h-8 bg-blue-500 rounded-full opacity-30"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-6 h-6 bg-green-500 rounded-full opacity-40"></div>
-
       {/* Navigation */}
-      <nav className="relative z-10 flex justify-between items-center p-6">
-        <div className="text-white text-xl font-bold">NaviFly</div>
-        <div className="flex space-x-4">
-          <a href="#" className="text-white hover:text-gray-300">
-            AIM
-          </a>
-          <a href="#" className="text-white hover:text-gray-300">
-            Services
-          </a>
-          <a href="#" className="text-white hover:text-gray-300">
-            How to use
-          </a>
-          <a href="#" className="text-white hover:text-gray-300">
-            About us
-          </a>
-        </div>
-        <div className="flex space-x-4">
-          <button className="text-white hover:text-gray-300">
-            Get Started
-          </button>
-          <button className="bg-white text-black px-4 py-2 rounded-full">
-            Premium
-          </button>
-        </div>
-      </nav>
-
+      <Header />
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8">
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8 pt-40">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -179,9 +149,6 @@ const LandingPage = () => {
             <br />
             NaviFly, the open MI travel assistant.
           </p>
-          <button className="bg-white text-black px-6 py-3 rounded-full text-lg font-semibold">
-            LETS READY FOR TAKE OFF
-          </button>
         </motion.div>
 
         <motion.div
@@ -224,7 +191,21 @@ const LandingPage = () => {
                         autoComplete="off"
                       />
                     </div>
-                    {/* Source suggestions */}
+                    {showSourceSuggestions && sourceSuggestions.length > 0 && (
+                      <ul className="absolute z-10 w-full bg-[#1C2331] mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
+                        {sourceSuggestions.map((suggestion, index) => (
+                          <li
+                            key={index}
+                            className="px-4 py-2 hover:bg-[#2C3341] cursor-pointer text-white"
+                            onClick={() =>
+                              handleSuggestionClick(suggestion, "source")
+                            }
+                          >
+                            {suggestion}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   {/* To */}
@@ -247,7 +228,21 @@ const LandingPage = () => {
                         autoComplete="off"
                       />
                     </div>
-                    {/* Destination suggestions */}
+                    {showDestSuggestions && destSuggestions.length > 0 && (
+                      <ul className="absolute z-10 w-full bg-[#1C2331] mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
+                        {destSuggestions.map((suggestion, index) => (
+                          <li
+                            key={index}
+                            className="px-4 py-2 hover:bg-[#2C3341] cursor-pointer text-white"
+                            onClick={() =>
+                              handleSuggestionClick(suggestion, "destination")
+                            }
+                          >
+                            {suggestion}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   {/* Date */}
@@ -266,6 +261,7 @@ const LandingPage = () => {
                         onChange={(date) => setForm({ ...form, date })}
                         className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
                         placeholderText="Select date"
+                        autoComplete="off"
                       />
                     </div>
                   </div>
@@ -313,13 +309,6 @@ const LandingPage = () => {
             </div>
           </div>
         </motion.div>
-
-        {/* Plane image */}
-        {/* <img
-          src={planeImage}
-          alt="Plane"
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 max-w-3xl"
-        /> */}
       </div>
     </div>
   );
