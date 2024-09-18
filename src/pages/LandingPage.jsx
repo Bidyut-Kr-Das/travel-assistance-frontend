@@ -5,12 +5,15 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import SSLWarning from "../components/SSLWarning"
-
 import apiKey from "../api/apiKey";
 import { useNavigate } from "react-router-dom";
 
+// Import new assets (you'll need to create or source these)
+import { heroBackground } from "../assets";
+
 const LandingPage = () => {
+  // ... (keep all existing state and functions)
+
   const [form, setForm] = useState({
     source: "",
     destination: "",
@@ -114,155 +117,169 @@ const LandingPage = () => {
       setShowDestSuggestions(false);
     }
   };
-
   return (
-<>
-    <SSLWarning />
-    <div className="relative min-h-screen overflow-hidden">
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8 transition-all duration-2000 ease-in-out">
-        <form
-          onSubmit={(e) => {
-            sendData();
-            e.preventDefault();
-            toast.promise(sendData, {
-              loading: "Predicting...",
-              success: "Prediction Successful",
-              error: "Prediction Failed, Cannot connect to the server",
-            });
-          }}
+    <div className="relative min-h-screen overflow-hidden bg-[#0B0F19]">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroBackground}
+          alt="Background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Floating planets/orbs */}
+      <div className="absolute top-10 left-10 w-4 h-4 bg-red-500 rounded-full opacity-50"></div>
+      <div className="absolute top-1/4 right-1/4 w-8 h-8 bg-blue-500 rounded-full opacity-30"></div>
+      <div className="absolute bottom-1/4 left-1/3 w-6 h-6 bg-green-500 rounded-full opacity-40"></div>
+
+      {/* Navigation */}
+      <nav className="relative z-10 flex justify-between items-center p-6">
+        <div className="text-white text-xl font-bold">NaviFly</div>
+        <div className="flex space-x-4">
+          <a href="#" className="text-white hover:text-gray-300">
+            AIM
+          </a>
+          <a href="#" className="text-white hover:text-gray-300">
+            Services
+          </a>
+          <a href="#" className="text-white hover:text-gray-300">
+            How to use
+          </a>
+          <a href="#" className="text-white hover:text-gray-300">
+            About us
+          </a>
+        </div>
+        <div className="flex space-x-4">
+          <button className="text-white hover:text-gray-300">
+            Get Started
+          </button>
+          <button className="bg-white text-black px-4 py-2 rounded-full">
+            Premium
+          </button>
+        </div>
+      </nav>
+
+      {/* Main content */}
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <motion.div
-            className="w-full max-w-md"
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5, delay: 1 }}
-          >
-            <motion.h1
-              className="text-4xl font-bold mb-8 text-center text-white animate-pulse oldenburg-regular"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
-            >
-              Track Your Flight
-            </motion.h1>
-            <motion.div
-              className="bg-gray-800 bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-white border-opacity-30"
-              variants={fadeIn}
-              transition={{ duration: 0.5, delay: 1.4 }}
-            >
-              <div className="space-y-4">
-                <motion.div
-                  className="relative"
-                  variants={fadeIn}
-                  transition={{ duration: 0.3, delay: 1.6 }}
-                  ref={sourceRef}
-                >
-                  <label
-                    htmlFor="from"
-                    className="text-sm text-white mb-1 block"
-                  >
-                    From
-                  </label>
-                  <div className="flex items-center bg-gray-900 bg-opacity-50 rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-white hover:bg-opacity-70">
-                    <FaPlaneDeparture className="w-5 h-5 mr-3 text-white" />
-                    <input
-                      id="from"
-                      type="text"
-                      value={form.source}
-                      onChange={handleSourceChange}
-                      placeholder="Enter origin"
-                      className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
-                      autoComplete="off"
-                    />
-                  </div>
-                  {showSourceSuggestions && sourceSuggestions.length > 0 && (
-                    <ul className="absolute z-10 w-full bg-gray-900 mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
-                      {sourceSuggestions.map((suggestion, index) => (
-                        <li
-                          key={index}
-                          className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-white"
-                          onClick={() =>
-                            handleSuggestionClick(suggestion, "source")
-                          }
-                        >
-                          {suggestion}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </motion.div>
+          <h1 className="text-5xl font-bold mb-4 text-white">
+            Guiding you through every step
+            <br />
+            of your journey with <span className="underline">NaviFly</span>
+          </h1>
+          <p className="text-xl text-gray-300 mb-8">
+            Unleash the power of MI within NaviFly. Upgrade your journey
+            smoother with
+            <br />
+            NaviFly, the open MI travel assistant.
+          </p>
+          <button className="bg-white text-black px-6 py-3 rounded-full text-lg font-semibold">
+            LETS READY FOR TAKE OFF
+          </button>
+        </motion.div>
 
-                <motion.div
-                  className="relative"
-                  variants={fadeIn}
-                  transition={{ duration: 0.3, delay: 1.8 }}
-                  ref={destRef}
-                >
-                  <label htmlFor="to" className="text-sm text-white mb-1 block">
-                    To
-                  </label>
-                  <div className="flex items-center bg-gray-900 bg-opacity-50 rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-white hover:bg-opacity-70">
-                    <FaPlaneArrival className="w-5 h-5 mr-3 text-white" />
-                    <input
-                      id="to"
-                      type="text"
-                      value={form.destination}
-                      onChange={handleDestChange}
-                      placeholder="Enter destination"
-                      className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
-                      autoComplete="off"
-                    />
+        <motion.div
+          className="w-full max-w-4xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-0.5 rounded-3xl">
+            <div className="bg-[#0D1425] rounded-3xl p-8">
+              <div className="h-8 bg-[#1C2331] rounded-t-2xl mb-4"></div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  toast.promise(sendData, {
+                    loading: "Predicting...",
+                    success: "Prediction Successful",
+                    error: "Prediction Failed, Cannot connect to the server",
+                  });
+                }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* From */}
+                  <div className="relative" ref={sourceRef}>
+                    <label
+                      htmlFor="from"
+                      className="text-sm text-gray-400 mb-1 block"
+                    >
+                      From
+                    </label>
+                    <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                      <FaPlaneDeparture className="w-5 h-5 mr-3 text-purple-500" />
+                      <input
+                        id="from"
+                        type="text"
+                        value={form.source}
+                        onChange={handleSourceChange}
+                        placeholder="Enter origin"
+                        className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
+                        autoComplete="off"
+                      />
+                    </div>
+                    {/* Source suggestions */}
                   </div>
-                  {showDestSuggestions && destSuggestions.length > 0 && (
-                    <ul className="absolute z-10 w-full bg-gray-900 mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
-                      {destSuggestions.map((suggestion, index) => (
-                        <li
-                          key={index}
-                          className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-white"
-                          onClick={() =>
-                            handleSuggestionClick(suggestion, "destination")
-                          }
-                        >
-                          {suggestion}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </motion.div>
 
-                <motion.div
-                  className="flex space-x-4"
-                  variants={fadeIn}
-                  transition={{ duration: 0.3, delay: 2 }}
-                >
-                  <div className="relative w-full">
+                  {/* To */}
+                  <div className="relative" ref={destRef}>
+                    <label
+                      htmlFor="to"
+                      className="text-sm text-gray-400 mb-1 block"
+                    >
+                      To
+                    </label>
+                    <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                      <FaPlaneArrival className="w-5 h-5 mr-3 text-purple-500" />
+                      <input
+                        id="to"
+                        type="text"
+                        value={form.destination}
+                        onChange={handleDestChange}
+                        placeholder="Enter destination"
+                        className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
+                        autoComplete="off"
+                      />
+                    </div>
+                    {/* Destination suggestions */}
+                  </div>
+
+                  {/* Date */}
+                  <div className="relative">
                     <label
                       htmlFor="date"
-                      className="text-sm text-white mb-1 block"
+                      className="text-sm text-gray-400 mb-1 block"
                     >
                       Date
                     </label>
-                    <div className="flex items-center bg-gray-900 bg-opacity-50 rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-white hover:bg-opacity-70">
-                      <FiCalendar className="w-5 h-5 mr-3 text-white" />
+                    <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                      <FiCalendar className="w-5 h-5 mr-3 text-purple-500" />
                       <DatePicker
                         id="date"
                         selected={form.date}
                         onChange={(date) => setForm({ ...form, date })}
-                        className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
+                        className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
                         placeholderText="Select date"
                       />
                     </div>
                   </div>
-                  <div className="relative w-full">
+
+                  {/* Time */}
+                  <div className="relative">
                     <label
                       htmlFor="time"
-                      className="text-sm text-white mb-1 block"
+                      className="text-sm text-gray-400 mb-1 block"
                     >
                       Time
                     </label>
-                    <div className="flex items-center bg-gray-900 bg-opacity-50 rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-white hover:bg-opacity-70">
-                      <FiClock className="w-5 h-5 mr-3 text-white" />
+                    <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                      <FiClock className="w-5 h-5 mr-3 text-purple-500" />
                       <input
                         id="time"
                         type="time"
@@ -270,31 +287,41 @@ const LandingPage = () => {
                         onChange={(e) =>
                           setForm({ ...form, time: e.target.value })
                         }
-                        className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
+                        className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
                       />
                     </div>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="mt-8"
-                  variants={fadeIn}
-                  transition={{ duration: 0.3, delay: 2.8 }}
-                >
+                <div className="mt-8">
                   <button
                     type="submit"
-                    className="w-full bg-white hover:bg-white/80 text-black py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-blue-400 transform hover:scale-105"
+                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg transition-all duration-300 hover:opacity-90 transform hover:scale-105"
                   >
                     Predict
                   </button>
-                </motion.div>
+                </div>
+              </form>
+
+              {/* MI is generating... */}
+              <div className="mt-4 bg-[#1C2331] rounded-lg p-4 flex items-center justify-between">
+                <div className="flex items-center">
+                  <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse mr-3"></div>
+                  <span className="text-white">MI is generating</span>
+                </div>
               </div>
-            </motion.div>
-          </motion.div>
-        </form>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Plane image */}
+        {/* <img
+          src={planeImage}
+          alt="Plane"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 max-w-3xl"
+        /> */}
       </div>
     </div>
-</>
   );
 };
 
