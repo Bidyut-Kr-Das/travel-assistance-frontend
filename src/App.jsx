@@ -11,6 +11,7 @@ import Flight_card from "./components/Flight_card";
 import StarryBackground from "./pages/StarryBackground.jsx";
 import Test_component from "./components/Test_component.jsx";
 import Land from "./Land.jsx";
+import ChatSection from "./components/ChatSection.jsx";
 
 const App = () => {
   return (
@@ -22,7 +23,11 @@ const App = () => {
         <Route path="/LandingPage" element={<LandingPage />} />
         <Route path="/prediction" element={<Prediction_page />} />
         <Route path="/Testing" element={<ThreeD />} />
-        <Route path="/Flight_card" element={<Test_component />} />
+        {/* <Route path="/Flight_card" element={<Test_component />} /> */}
+        <Route
+          path="/developer_region"
+          element={<ChatSection isOpen={true} />}
+        />
         <Route path="*" element={<h1>You are not worthy</h1>} />
       </Routes>
     </main>

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 const Collapsable_card = ({
   section_name,
   title,
   button_name,
   function_passed,
+  className,
   isLast = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +18,17 @@ const Collapsable_card = ({
         }`}
       >
         {section_name && (
-          <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+          <div
+            className={twMerge(`w-3 h-3 bg-gray-300 rounded-full`, className)}
+          ></div>
         )}
         {!isLast && (
-          <div className="w-1 h-full bg-gray-300 !overflow-hidden"></div>
+          <div
+            className={twMerge(
+              `w-1 h-full bg-gray-300 !overflow-hidden`,
+              className
+            )}
+          ></div>
         )}
       </div>
       {/* -----Card----- */}

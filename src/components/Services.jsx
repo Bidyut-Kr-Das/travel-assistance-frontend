@@ -122,7 +122,7 @@ const Services = () => {
                 />
 
                 <VideoChatMessage />
-                <VideoBar />
+                {/* <VideoBar /> */}
               </div>
             </div>
           </div>

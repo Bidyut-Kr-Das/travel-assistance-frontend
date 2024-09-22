@@ -22,10 +22,11 @@ const TimelineItem = ({
         }`}
       >
         {section_name && (
+          // THis is the white circle
           <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
         )}
         {!isLast && (
-          <div className="w-1 h-full bg-gray-300 !overflow-hidden"></div>
+          <div className="w-1 h-full bg-green-300 !overflow-hidden"></div>
         )}
       </div>
       <div className="pb-8 w-[90%]">
@@ -156,6 +157,7 @@ const Timeline = ({ data }) => {
       ></TimelineItem>
 
       <TimelineItem
+        section_name={`Flights`}
         title="Top 3 flights"
         description="Click the arrow to see the flights"
         enableButton={true}
@@ -179,7 +181,7 @@ const Timeline = ({ data }) => {
         title="Disclaimer"
         description={`Please provide further details to provide further assistance. Click the arrow to view the requirements.`}
         enableButton={true}
-        className="9.5rem"
+        className="4.5rem"
       >
         <ul className="list-disc ml-4 text-sky-600">
           <li className="list-item">
@@ -192,11 +194,10 @@ const Timeline = ({ data }) => {
         </ul>
       </TimelineItem>
       <Collapsable_card
-        title={`Allow location access   ${
-          location.latitude ? "**Granted**" : ""
-        }`}
+        title={`Allow location access   `}
         button_name={"Allow"}
         function_passed={getLocaiton}
+        className={`bg-blue-500`}
       />
       <Collapsable_card
         title={`Provide Ticket Details`}
@@ -204,6 +205,7 @@ const Timeline = ({ data }) => {
         function_passed={() => {
           toggleTicket((prev) => !prev);
         }}
+        className={`bg-red-500`}
       />
       {ticket && (
         <Ticket_form
