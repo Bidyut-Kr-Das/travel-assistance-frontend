@@ -88,7 +88,7 @@ const Prediction_page = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-8 sm:mb-12"
         >
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold text-center oldenburg-regular leading-tight">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold text-center font-['Orbitron'] leading-tight">
             Your Travel Assistant
           </h1>
         </motion.div>

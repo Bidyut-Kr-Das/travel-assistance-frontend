@@ -3,6 +3,7 @@ import Flight_card from "./Flight_card";
 import Collapsable_card from "./Collapsable_card";
 import Ticket_form from "./Ticket_form";
 import apiKey from "../api/apiKey";
+import { ChevronDown } from "lucide-react";
 
 const TimelineItem = ({
   section_name,
@@ -12,57 +13,55 @@ const TimelineItem = ({
   children,
   className,
   isLast = false,
+  ...other
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="flex ">
+    <div className="flex">
       <div
         className={`flex flex-col items-center ${
-          section_name ? "mr-4" : "mr-5 ml-1"
+          section_name ? "mr-4" : "mr-5 ml-[6px]"
         }`}
       >
         {section_name && (
-          // THis is the white circle
-          <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+          <div className="w-4 h-4 bg-blue-500 rounded-full border-2 border-white"></div>
         )}
-        {!isLast && (
-          <div className="w-1 h-full bg-green-300 !overflow-hidden"></div>
-        )}
+        {!isLast && <div className="w-1 h-full bg-blue-300"></div>}
       </div>
       <div className="pb-8 w-[90%]">
-        <p className="text-lg text-white animate-pulse  mb-2 -mt-1 ">
+        <p className="text-xl text-blue-400 font-semibold font-['Quicksand'] mb-2 -mt-1 tracking-wide">
           {section_name}
         </p>
-        <div className="bg-gray-800 rounded-lg shadow p-4 mb-2">
-          <div className="flex justify-between">
-            <h3 className="font-bold text-white">
-              {title || "This is title section"}
+        <div className="bg-gray-900 rounded-lg shadow-lg p-6 mb-2 border border-blue-500">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-2xl font-bold text-[#00BFFF] font-['Orbitron'] tracking-wide ">
+              {title ||
+                `This is ${
+                  true && <span className="text-yellow-400">title</span>
+                } section`}
             </h3>
             {enableButton && (
               <button
-                onClick={() => {
-                  setIsOpen((prev) => {
-                    return !prev;
-                  });
-                }}
+                onClick={() => setIsOpen((prev) => !prev)}
+                className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
               >
-                <img
-                  src="/ui/rightArrow.svg"
-                  alt=""
-                  className={`${
-                    isOpen ? `rotate-90` : `-rotate-90`
-                  } duration-500`}
+                <ChevronDown
+                  size={24}
+                  className={`transform transition-transform duration-500 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
             )}
           </div>
-          <p className="text-sm text-gray-500 w-[95%]">
+          <p className="text-lg text-[#E0FFFF] w-[95%] mb-4 font-medium font-['Quicksand'] tracking-wider">
             {description || "Click to view the airlines"}
           </p>
           <section
-            style={{ height: isOpen ? className || "30rem" : "0px" }}
-            className={`content grid grid-cols-1  gap-4 overflow-auto ${
-              isOpen ? "py-4" : "py-0"
+            style={{ maxHeight: isOpen ? className || "30rem" : "0px" }}
+            className={`content grid grid-cols-1 gap-4 overflow-auto transition-all duration-500 ease-in-out ${
+              isOpen ? "opacity-100" : "opacity-0"
             }`}
           >
             {children}
@@ -95,7 +94,31 @@ const Timeline = ({ data }) => {
     ariport_distance: "",
     airport_time: "",
     mode_of_transport: "",
+    leavingtime: "",
   });
+  const getTimeBeforeDeparture = (departureTime, hoursBefore) => {
+    const [hours, minutes] = departureTime.split(":").map(Number); // Convert to numbers
+    console.log(hours, minutes);
+    console.log(details.departure_time);
+    // Subtract hours and handle cases where the hour goes below 0
+    let adjustedHours = hours - hoursBefore;
+    console.log(adjustedHours);
+    if (adjustedHours < 0) {
+      adjustedHours += 24; // Wrap around if the time is negative (e.g., crossing midnight)
+    }
+
+    // Ensure minutes are valid (just to be safe)
+    const adjustedMinutes = minutes || 0;
+
+    // Format hours and minutes back to "hh:mm"
+    const formattedHours = String(adjustedHours).padStart(2, "0");
+    const formattedMinutes = String(adjustedMinutes).padStart(2, "0");
+    console.log(`${formattedHours}:${formattedMinutes}`);
+    update_Details({
+      ...details,
+      leavingtime: `${formattedHours}:${formattedMinutes}`,
+    });
+  };
 
   const get_ticket_data = async (data) => {
     // convert the city to capitalise
@@ -126,6 +149,7 @@ const Timeline = ({ data }) => {
     }
     console.log(details);
     updateAirport(true);
+    getTimeBeforeDeparture(details.departure_time, 3);
   };
 
   const fetch_details_of_airport = async (data) => {
@@ -219,7 +243,7 @@ const Timeline = ({ data }) => {
         <>
           <TimelineItem
             title="Nearest Airport Details"
-            description={`The nearest airport is <span className="bg-blue-600">${details.airport_name}</span> at a distance of ${details.ariport_distance} and you can reach there in ${details.airport_time}`}
+            description={`The nearest airport is ${details.airport_name} at a distance of ${details.ariport_distance} and you can reach there in ${details.airport_time}`}
           ></TimelineItem>
           <TimelineItem
             title={`Documents Required`}
@@ -236,7 +260,7 @@ const Timeline = ({ data }) => {
           </TimelineItem>
           <TimelineItem
             title="Arrive at the Airport Early"
-            description="Plan to arrive at least 2-3 hours before your flight to allow enough time for check-in, security, and other procedures. For international flights, arriving earlier is advisable"
+            description={`Plan to arrive at least ${details.leavingtime} hours before your flight to allow enough time for check-in, security, and other procedures. For international flights, arriving earlier is advisable`}
           />
           <TimelineItem
             title="Locate Your Terminal"
