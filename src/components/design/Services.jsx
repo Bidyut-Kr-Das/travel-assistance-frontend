@@ -24,11 +24,10 @@ export const PhotoChatMessage = () => {
   );
 };
 
-export const VideoChatMessage = () => {
+export const VideoChatMessage = ({ role, name }) => {
   return (
-    
     <div className="absolute top-8 left-[3.125rem] w-full max-w-[14rem] pt-2.5 pr-2.5 pb-7 pl-5 bg-n-6 rounded-t-xl rounded-br-xl font-code text-base md:max-w-[17.5rem]">
-     Lead: Bidyut kr. Das and co-teammates Kingshuk Sil and Swarnodip Dasgupta.
+      {`${role}: ${name}`}
       <div className="absolute left-5 -bottom-[1.125rem] flex items-center justify-center w-[2.25rem] h-[2.25rem] bg-slate-900 rounded-[0.75rem]">
         <img
           src={brainwaveWhiteSymbol}
