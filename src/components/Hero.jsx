@@ -42,7 +42,7 @@ const Hero = () => {
             Unleash the power of MI within NaviFly. Upgrade your journy smoother
             with NaviFly, the open MI travel assistant.
           </p>
-          <Button onClick={() => navigate("/LandingPage")} white>
+          <Button onClick={() => navigate("/services")} white>
             Lets ready for take off
           </Button>
         </div>
@@ -55,7 +55,6 @@ const Hero = () => {
                 <img
                   src={robot}
                   className=" w-full h-full object-cover"
-                  
                   alt="AI"
                 />
 

@@ -24,7 +24,7 @@ const ChatSection = ({ isOpen, onClose }) => {
         text: res.data || "No reply received",
       };
 
-      apiResponse.text = apiResponse.text.replace(/ \* /g, "<br /> <br />");
+      apiResponse.text = apiResponse.text.replace(/ \* /g, "<br />");
 
       setChatHistory((prevHistory) => [...prevHistory, apiResponse]);
     } catch (error) {
@@ -38,7 +38,7 @@ const ChatSection = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bottom-0 sm:bottom-4 right-0 sm:right-4 flex items-center justify-center z-50 ">
+    <div className="fixed inset-0 bottom-0 sm:bottom-4 right-0 backdrop-blur-md sm:right-4 flex justify-end items-end z-50 ">
       <div className="relative bg-gray-800 w-full max-w-lg p-3 sm:p-6 rounded-lg shadow-lg text-gray-100">
         <h2 className="text-xl font-semibold mb-4 text-blue-300 flex w-full justify-between">
           Ask your Queries
