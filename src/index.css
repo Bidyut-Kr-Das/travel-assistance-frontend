@@ -1,9 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Quicksand&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem; /* Adjust size as needed */
+  letter-spacing: 0.02em; /* Slight positive letter-spacing for a more spacious look */
+}
+
+.description {
+  font-family: "Quicksand", sans-serif;
+}
+
 .oldenburg-regular {
   font-family: "Oldenburg", serif;
   font-weight: 400;
