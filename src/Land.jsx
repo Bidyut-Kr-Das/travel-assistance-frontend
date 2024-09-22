@@ -15,10 +15,10 @@ const Land = () => {
         <Header />
         <Hero />
         <Benefits />
-        {<Collaboration />}
-        {<Services />}
+        <Collaboration />
+        { <Services />  }
         <Pricing />
-        { <Roadmap />}
+        {/* { <Roadmap />} */}
         <Footer />
       </div>
 

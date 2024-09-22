@@ -128,21 +128,21 @@ export const roadmap = [
 ];
 
 export const collabText =
-  "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
+  "";
 
 export const collabContent = [
   {
     id: "0",
-    title: "Seamless Integration",
+    title: "Python Development",
     text: collabText,
   },
   {
     id: "1",
-    title: "Smart Automation",
+    title: "React JS Development",
   },
   {
     id: "2",
-    title: "Top-notch Security",
+    title: "AWS Deployment",
   },
 ];
 
@@ -151,57 +151,57 @@ export const collabApps = [
     id: "0",
     title: "Figma",
     icon: figma,
-    width: 26,
-    height: 36,
+    width: 40,
+    height: 40,
   },
   {
     id: "1",
     title: "Notion",
     icon: notion,
-    width: 34,
-    height: 36,
+    width: 40,
+    height: 40,
   },
   {
     id: "2",
     title: "Discord",
     icon: discord,
-    width: 36,
-    height: 28,
+    width: 40,
+    height: 40,
   },
   {
     id: "3",
     title: "Slack",
     icon: slack,
-    width: 34,
-    height: 35,
+    width: 40,
+    height: 40,
   },
   {
     id: "4",
     title: "Photoshop",
     icon: photoshop,
-    width: 34,
-    height: 34,
+    width: 40,
+    height: 40,
   },
   {
     id: "5",
     title: "Protopie",
     icon: protopie,
-    width: 34,
-    height: 34,
+    width: 40,
+    height: 40,
   },
   {
     id: "6",
     title: "Framer",
     icon: framer,
-    width: 26,
-    height: 34,
+    width: 40,
+    height: 40,
   },
   {
     id: "7",
     title: "Raindrop",
     icon: raindrop,
-    width: 38,
-    height: 32,
+    width: 40,
+    height: 40,
   },
 ];
 
@@ -210,22 +210,22 @@ export const pricing = [
     id: "0",
     title: "Basic",
     description: "Personalized recommendations , once a monthly",
-    price: "0",
+    price: "0/-",
     features: [
-      "An ML Model that can understand your queries",
-      "Personalized recommendations based on your preferences",
+      "Flight search is limited to 4 par month",
+      "chatbot interaction is limited to 20 queries par month",
       "Ability to explore the app and its features without any cost",
     ],
   },
   {
     id: "1",
     title: "Premium",
-    description: "Advanced ML Features, priority support, analytics dashboard",
-    price: "9.99",
+    description: "Advanced ML Features, priority support, one year experience",
+    price: "999/-",
     features: [
-      "An advanced ML Model that can understand complex queries",
-      "An analytics dashboard to track your conversations",
-      "Priority support to solve issues quickly",
+      "Unlimited Flight search",
+      "Unlimited chatbot interaction ",
+      "Priority support to solve issues quickly and easily applicable for users",
     ],
   },
   {
@@ -236,7 +236,7 @@ export const pricing = [
     features: [
       "An ML Model that can understand your queries",
       "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
+      "Ability to explore the app ",
     ],
   },
 ];

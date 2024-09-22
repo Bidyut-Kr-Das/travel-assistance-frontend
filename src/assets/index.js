@@ -1,7 +1,7 @@
 import brainwave from "./logo5-rbg.png";
 import check from "./check.svg";
 import brainwaveSymbol from "./NAVILOGO.png";
-import brainwaveWhiteSymbol from "./brainwave-symbol-white.svg";
+import brainwaveWhiteSymbol from "./NAVILOGO.png";
 import play from "./play.svg";
 import gradient from "./gradient.png";
 import smallSphere from "./4-small.png";
@@ -28,13 +28,21 @@ import heroBackground from "./hero/hero-background.jpg";
 import curve1 from "./collaboration/curve-1.svg";
 import curve2 from "./collaboration/curve-2.svg";
 import discord from "./collaboration/discord.png";
-import figma from "./collaboration/figma.png";
-import framer from "./collaboration/framer.png";
-import notion from "./collaboration/notion.png";
-import photoshop from "./collaboration/photoshop.png";
-import protopie from "./collaboration/protopie.png";
-import raindrop from "./collaboration/raindrop.png";
-import slack from "./collaboration/slack.png";
+// import figma from "./collaboration/figma.png";
+const figma = "https://skillicons.dev/icons?i=github";
+// import framer from "./collaboration/framer.png";
+const framer = "https://skillicons.dev/icons?i=react";
+// import notion from "./collaboration/notion.png";
+const notion = "https://skillicons.dev/icons?i=py";
+// import photoshop from "./collaboration/photoshop.png";
+const photoshop = "https://skillicons.dev/icons?i=tailwind";
+// import protopie from "./collaboration/protopie.png";
+const protopie = "https://skillicons.dev/icons?i=vscode";
+
+// import raindrop from "./collaboration/raindrop.png";
+const raindrop = "https://skillicons.dev/icons?i=aws";
+// import slack from "./collaboration/slack.png";
+const slack = "https://skillicons.dev/icons?i=flask";
 
 import service1 from "./hero/flight9.png";
 import service2 from "./services/flight10.jpg";

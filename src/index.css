@@ -103,3 +103,20 @@ input::-webkit-inner-spin-button {
 .-rotate-360 {
   @apply rotate-[-360deg];
 }
+
+.chat-section {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.chat-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-section::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.chat-section::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}

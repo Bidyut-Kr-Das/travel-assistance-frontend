@@ -20,8 +20,8 @@ const Services = () => {
           text="Navifly unlocks the potential of ML-powered applications"
         />
 
-        <div className="relative">
-          <div className="relative z-1 flex items-center h-[39rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:p-20 xl:h-[46rem]">
+        {/* <div className="relative"><div/> */}
+          {/* <div className="relative z-1 flex items-center h-[39rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:p-20 xl:h-[46rem]">
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none md:w-3/5 xl:w-auto">
               <img
                 className=" w-full h-full object-cover md:object-right"
@@ -50,10 +50,10 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
-            <Generating className="absolute left-4 right-4 bottom-4 border-n-1/10 border lg:left-1/2 lg-right-auto lg:bottom-8 lg:-translate-x-1/2" />
-          </div>
+            {/* <Generating className="absolute left-4 right-4 bottom-4 border-n-1/10 border lg:left-1/2 lg-right-auto lg:bottom-8 lg:-translate-x-1/2" />
+          </div> */}
 
           <div className="relative z-1 grid gap-5 lg:grid-cols-2">
             <div className="relative min-h-[39rem] border border-n-1/10 rounded-3xl overflow-hidden">
@@ -88,7 +88,7 @@ const Services = () => {
                   Details about Our developers
                 </p>
 
-                <ul className="flex items-center justify-between">
+                {/* <ul className="flex items-center justify-between">
                   {brainwaveServicesIcons.map((item, index) => (
                     <li
                       key={index}
@@ -109,7 +109,7 @@ const Services = () => {
                       </div>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
 
               <div className="relative h-[20rem] bg-n-8 rounded-xl overflow-hidden md:h-[25rem]">
@@ -122,14 +122,14 @@ const Services = () => {
                 />
 
                 <VideoChatMessage />
-                <VideoBar />
+                {/* <VideoBar /> */}
               </div>
             </div>
           </div>
 
           <Gradient />
         </div>
-      </div>
+      
     </Section>
   );
 };
