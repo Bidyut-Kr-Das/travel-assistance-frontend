@@ -127,8 +127,7 @@ export const roadmap = [
   },
 ];
 
-export const collabText =
-  "";
+export const collabText = "";
 
 export const collabContent = [
   {
@@ -221,7 +220,7 @@ export const pricing = [
     id: "1",
     title: "Premium",
     description: "Advanced ML Features, priority support, one year experience",
-    price: "999/-",
+    price: "500/-",
     features: [
       "Unlimited Flight search",
       "Unlimited chatbot interaction ",

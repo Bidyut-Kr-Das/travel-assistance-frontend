@@ -11,12 +11,12 @@ import Services from "./components/Services";
 const Land = () => {
   return (
     <>
-      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
+      <div className="pt-[4.75rem] lg:pt-[5.25rem]">
         <Header />
         <Hero />
         <Benefits />
         <Collaboration />
-        { <Services />  }
+        {<Services />}
         <Pricing />
         {/* { <Roadmap />} */}
         <Footer />

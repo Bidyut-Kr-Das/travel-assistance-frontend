@@ -14,7 +14,7 @@ const Flight_card = ({
     city && typeof city === "string" ? city.slice(0, 3).toUpperCase() : "";
 
   return (
-    <div className="bg-gradient-to-br from-[#2C3E50] to-[#34495E] w-full max-w-md mx-auto text-white px-6 rounded-3xl py-8 flex flex-col gap-6 relative transition-all duration-300 overflow-hidden transform hover:-translate-y-1 h-64">
+    <div className="bg-gradient-to-br from-[#2C3E50] to-[#34495E] w-full max-w-md mx-auto text-white px-6 rounded-3xl py-8 flex flex-col gap-6 relative transition-all duration-300 overflow-hidden transform  h-64">
       <div className="w-full flex font-bold text-3xl md:text-4xl uppercase tracking-wide relative">
         <span className="flex-grow flex flex-col gap-1">
           <span className="transition-all duration-300 hover:scale-105">

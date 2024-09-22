@@ -20,7 +20,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Land />} />
-        <Route path="/LandingPage" element={<LandingPage />} />
+        <Route path="/services" element={<LandingPage />} />
         <Route path="/prediction" element={<Prediction_page />} />
         <Route path="/Testing" element={<ThreeD />} />
         {/* <Route path="/Flight_card" element={<Test_component />} /> */}

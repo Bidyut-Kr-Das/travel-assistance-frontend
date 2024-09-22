@@ -59,7 +59,7 @@ const TimelineItem = ({
             {description || "Click to view the airlines"}
           </p>
           <section
-            style={{ maxHeight: isOpen ? className || "30rem" : "0px" }}
+            style={{ height: isOpen ? className || "30rem" : "0px" }}
             className={`content grid grid-cols-1 gap-4 overflow-auto transition-all duration-500 ease-in-out ${
               isOpen ? "opacity-100" : "opacity-0"
             }`}
