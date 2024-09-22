@@ -35,7 +35,7 @@ const TimelineItem = ({
         </p>
         <div className="bg-gray-900 rounded-lg shadow-lg p-6 mb-2 border border-blue-500">
           <div className="flex justify-between items-center mb-2">
-            <h3 className="text-2xl font-bold text-[#00BFFF] font-['Orbitron'] tracking-wide ">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#00BFFF] font-['Orbitron'] tracking-wide ">
               {title ||
                 `This is ${
                   true && <span className="text-yellow-400">title</span>
@@ -55,7 +55,7 @@ const TimelineItem = ({
               </button>
             )}
           </div>
-          <p className="text-lg text-[#E0FFFF] w-[95%] mb-4 font-medium font-['Quicksand'] tracking-wider">
+          <p className="text-base sm:text-lg text-[#E0FFFF] w-[95%] mb-4 font-medium font-['Quicksand'] tracking-wider">
             {description || "Click to view the airlines"}
           </p>
           <section
