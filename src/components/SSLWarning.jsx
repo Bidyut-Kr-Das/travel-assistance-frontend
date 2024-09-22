@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const SSLWarning = (accepted, setAccepted) => {
   // Check if the cookie is present
   useEffect(() => {
+    console.log(accepted);
     const hasAccepted = document.cookie
       .split(";")
       .some((item) => item.trim().startsWith("sslAccepted="));
@@ -10,6 +11,7 @@ const SSLWarning = (accepted, setAccepted) => {
       console.log(hasAccepted);
       setAccepted(true);
     }
+    console.log(accepted);
   }, []);
 
   const handleProceed = () => {
@@ -19,7 +21,7 @@ const SSLWarning = (accepted, setAccepted) => {
   };
 
   // If accepted, do not render anything (component unloads)
-  if (accepted) {
+  if (!accepted) {
     return null;
   }
 

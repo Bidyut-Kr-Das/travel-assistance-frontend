@@ -25,7 +25,7 @@ const LandingPage = () => {
     airline: "Air_India",
   });
 
-  const [accepted, setAccepted] = useState(false);
+  // const [accepted, setAccepted] = useState(false);
 
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   const [sourceSuggestions, setSourceSuggestions] = useState([]);
@@ -117,7 +117,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <SSLWarning accepted={accepted} setAccepted={setAccepted} />
+      {/* <SSLWarning accepted={accepted} setAccepted={setAccepted} /> */}
       <div className="relative min-h-screen overflow-hidden bg-[#0B0F19]">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
@@ -127,203 +127,191 @@ const LandingPage = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        {accepted && (
-          <>
-            {/* Navigation */}
-            <Header />
-            {/* Main content */}
 
-            <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8 pt-40">
-              <motion.div
-                className="text-center mb-12"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <h1 className="text-5xl font-bold mb-4 text-white">
-                  Guiding you through every step
-                  <br />
-                  of your journey with{" "}
-                  <span className="underline">NaviFly</span>
-                </h1>
-                <p className="text-xl text-gray-300 mb-8">
-                  Unleash the power of MI within NaviFly. Upgrade your journey
-                  smoother with
-                  <br />
-                  NaviFly, the open MI travel assistant.
-                </p>
-              </motion.div>
+        {/* Navigation */}
+        <Header />
+        {/* Main content */}
 
-              <motion.div
-                className="w-full max-w-4xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-0.5 rounded-3xl">
-                  <div className="bg-[#0D1425] rounded-3xl p-8">
-                    <div className="h-8 bg-[#1C2331] rounded-t-2xl mb-4"></div>
-                    <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        toast.promise(sendData, {
-                          loading: "Predicting...",
-                          success: "Prediction Successful",
-                          error:
-                            "Prediction Failed, Cannot connect to the server",
-                        });
-                      }}
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* From */}
-                        <div className="relative" ref={sourceRef}>
-                          <label
-                            htmlFor="from"
-                            className="text-sm text-gray-400 mb-1 block"
-                          >
-                            From
-                          </label>
-                          <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
-                            <FaPlaneDeparture className="w-5 h-5 mr-3 text-purple-500" />
-                            <input
-                              id="from"
-                              type="text"
-                              value={form.source}
-                              onChange={handleSourceChange}
-                              placeholder="Enter origin"
-                              className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
-                              autoComplete="off"
-                            />
-                          </div>
-                          {showSourceSuggestions &&
-                            sourceSuggestions.length > 0 && (
-                              <ul className="absolute z-10 w-full bg-[#1C2331] mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
-                                {sourceSuggestions.map((suggestion, index) => (
-                                  <li
-                                    key={index}
-                                    className="px-4 py-2 hover:bg-[#2C3341] cursor-pointer text-white"
-                                    onClick={() =>
-                                      handleSuggestionClick(
-                                        suggestion,
-                                        "source"
-                                      )
-                                    }
-                                  >
-                                    {suggestion}
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                        </div>
+        <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8 pt-40">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-5xl font-bold mb-4 text-white">
+              Guiding you through every step
+              <br />
+              of your journey with <span className="underline">NaviFly</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8">
+              Unleash the power of MI within NaviFly. Upgrade your journey
+              smoother with
+              <br />
+              NaviFly, the open MI travel assistant.
+            </p>
+          </motion.div>
 
-                        {/* To */}
-                        <div className="relative" ref={destRef}>
-                          <label
-                            htmlFor="to"
-                            className="text-sm text-gray-400 mb-1 block"
-                          >
-                            To
-                          </label>
-                          <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
-                            <FaPlaneArrival className="w-5 h-5 mr-3 text-purple-500" />
-                            <input
-                              id="to"
-                              type="text"
-                              value={form.destination}
-                              onChange={handleDestChange}
-                              placeholder="Enter destination"
-                              className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
-                              autoComplete="off"
-                            />
-                          </div>
-                          {showDestSuggestions &&
-                            destSuggestions.length > 0 && (
-                              <ul className="absolute z-10 w-full bg-[#1C2331] mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
-                                {destSuggestions.map((suggestion, index) => (
-                                  <li
-                                    key={index}
-                                    className="px-4 py-2 hover:bg-[#2C3341] cursor-pointer text-white"
-                                    onClick={() =>
-                                      handleSuggestionClick(
-                                        suggestion,
-                                        "destination"
-                                      )
-                                    }
-                                  >
-                                    {suggestion}
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                        </div>
+          <motion.div
+            className="w-full max-w-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-0.5 rounded-3xl">
+              <div className="bg-[#0D1425] rounded-3xl p-8">
+                <div className="h-8 bg-[#1C2331] rounded-t-2xl mb-4"></div>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    toast.promise(sendData, {
+                      loading: "Predicting...",
+                      success: "Prediction Successful",
+                      error: "Prediction Failed, Cannot connect to the server",
+                    });
+                  }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* From */}
+                    <div className="relative" ref={sourceRef}>
+                      <label
+                        htmlFor="from"
+                        className="text-sm text-gray-400 mb-1 block"
+                      >
+                        From
+                      </label>
+                      <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                        <FaPlaneDeparture className="w-5 h-5 mr-3 text-purple-500" />
+                        <input
+                          id="from"
+                          type="text"
+                          value={form.source}
+                          onChange={handleSourceChange}
+                          placeholder="Enter origin"
+                          className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
+                          autoComplete="off"
+                        />
+                      </div>
+                      {showSourceSuggestions &&
+                        sourceSuggestions.length > 0 && (
+                          <ul className="absolute z-10 w-full bg-[#1C2331] mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
+                            {sourceSuggestions.map((suggestion, index) => (
+                              <li
+                                key={index}
+                                className="px-4 py-2 hover:bg-[#2C3341] cursor-pointer text-white"
+                                onClick={() =>
+                                  handleSuggestionClick(suggestion, "source")
+                                }
+                              >
+                                {suggestion}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                    </div>
 
-                        {/* Date */}
-                        <div className="relative">
-                          <label
-                            htmlFor="date"
-                            className="text-sm text-gray-400 mb-1 block"
-                          >
-                            Date
-                          </label>
-                          <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
-                            <FiCalendar className="w-5 h-5 mr-3 text-purple-500" />
-                            <DatePicker
-                              id="date"
-                              selected={form.date}
-                              onChange={(date) => setForm({ ...form, date })}
-                              className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
-                              placeholderText="Select date"
-                              autoComplete="off"
-                            />
-                          </div>
-                        </div>
-
-                        {/* Time */}
-                        <div className="relative">
-                          <label
-                            htmlFor="time"
-                            className="text-sm text-gray-400 mb-1 block"
-                          >
-                            Time
-                          </label>
-                          <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
-                            <FiClock className="w-5 h-5 mr-3 text-purple-500" />
-                            <input
-                              id="time"
-                              type="time"
-                              value={form.time}
-                              onChange={(e) =>
-                                setForm({ ...form, time: e.target.value })
+                    {/* To */}
+                    <div className="relative" ref={destRef}>
+                      <label
+                        htmlFor="to"
+                        className="text-sm text-gray-400 mb-1 block"
+                      >
+                        To
+                      </label>
+                      <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                        <FaPlaneArrival className="w-5 h-5 mr-3 text-purple-500" />
+                        <input
+                          id="to"
+                          type="text"
+                          value={form.destination}
+                          onChange={handleDestChange}
+                          placeholder="Enter destination"
+                          className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
+                          autoComplete="off"
+                        />
+                      </div>
+                      {showDestSuggestions && destSuggestions.length > 0 && (
+                        <ul className="absolute z-10 w-full bg-[#1C2331] mt-1 rounded-lg shadow-lg overflow-y-auto max-h-40">
+                          {destSuggestions.map((suggestion, index) => (
+                            <li
+                              key={index}
+                              className="px-4 py-2 hover:bg-[#2C3341] cursor-pointer text-white"
+                              onClick={() =>
+                                handleSuggestionClick(suggestion, "destination")
                               }
-                              className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
+                            >
+                              {suggestion}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
 
-                      <div className="mt-8">
-                        <button
-                          type="submit"
-                          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg transition-all duration-300 hover:opacity-90 transform hover:scale-105"
-                        >
-                          Predict
-                        </button>
+                    {/* Date */}
+                    <div className="relative">
+                      <label
+                        htmlFor="date"
+                        className="text-sm text-gray-400 mb-1 block"
+                      >
+                        Date
+                      </label>
+                      <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                        <FiCalendar className="w-5 h-5 mr-3 text-purple-500" />
+                        <DatePicker
+                          id="date"
+                          selected={form.date}
+                          onChange={(date) => setForm({ ...form, date })}
+                          className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
+                          placeholderText="Select date"
+                          autoComplete="off"
+                        />
                       </div>
-                    </form>
+                    </div>
 
-                    {/* MI is generating... */}
-                    <div className="mt-4 bg-[#1C2331] rounded-lg p-4 flex items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse mr-3"></div>
-                        <span className="text-white">MI is generating</span>
+                    {/* Time */}
+                    <div className="relative">
+                      <label
+                        htmlFor="time"
+                        className="text-sm text-gray-400 mb-1 block"
+                      >
+                        Time
+                      </label>
+                      <div className="flex items-center bg-[#1C2331] rounded-lg p-3 transition-all duration-300 focus-within:ring-2 focus-within:ring-purple-500">
+                        <FiClock className="w-5 h-5 mr-3 text-purple-500" />
+                        <input
+                          id="time"
+                          type="time"
+                          value={form.time}
+                          onChange={(e) =>
+                            setForm({ ...form, time: e.target.value })
+                          }
+                          className="bg-transparent text-white placeholder-gray-500 outline-none w-full"
+                        />
                       </div>
                     </div>
                   </div>
+
+                  <div className="mt-8">
+                    <button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg transition-all duration-300 hover:opacity-90 transform hover:scale-105"
+                    >
+                      Predict
+                    </button>
+                  </div>
+                </form>
+
+                {/* MI is generating... */}
+                <div className="mt-4 bg-[#1C2331] rounded-lg p-4 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse mr-3"></div>
+                    <span className="text-white">MI is generating</span>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </>
-        )}
+          </motion.div>
+        </div>
       </div>
     </>
   );
