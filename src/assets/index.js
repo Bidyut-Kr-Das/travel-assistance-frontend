@@ -22,7 +22,7 @@ import loading from "./loading.png";
 import background from "./background.jpg";
 
 import curve from "./hero/curve.png";
-import robot from "./hero/flight9.png";
+import robot from "./services/flight8.jpg";
 import heroBackground from "./hero/hero-background.jpg";
 
 import curve1 from "./collaboration/curve-1.svg";
@@ -36,7 +36,7 @@ import protopie from "./collaboration/protopie.png";
 import raindrop from "./collaboration/raindrop.png";
 import slack from "./collaboration/slack.png";
 
-import service1 from "./services/flight8.jpg";
+import service1 from "./hero/flight9.png";
 import service2 from "./services/flight10.jpg";
 import service3 from "./services/aboutusfly.webp";
 
