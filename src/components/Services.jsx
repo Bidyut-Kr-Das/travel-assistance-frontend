@@ -120,19 +120,22 @@ const Services = () => {
                 height={400}
                 alt="Scary robot"
               />
-
+            <div className="absolute top-8 left-0 right-0 mx-auto flex flex-col gap-4 w-[88%]">
               <VideoChatMessage
                 role={"Backend Developer"}
                 name={"Bidyut Kr Das"}
               />
+              <div className="w-full flex justify-end ">
               <VideoChatMessage
                 role={"Frontend Developer"}
                 name={"Kingshuk Sil"}
               />
+              </div>
               <VideoChatMessage
                 role={"Frontend and DataScientist"}
                 name={"Swarnadip Dasgupta"}
               />
+              </div>
               {/* <VideoBar /> */}
             </div>
           </div>

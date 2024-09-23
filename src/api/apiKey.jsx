@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true;
 
 const apiKey = axios.create({
   baseURL:
-    "https://ec2-3-108-254-223.ap-south-1.compute.amazonaws.com:5000/api/v1/",
+    "http://127.0.0.1:5000/api/v1/",
 });
 
 export default apiKey;
