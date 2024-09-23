@@ -147,9 +147,9 @@ const Timeline = ({ data }) => {
         airport_time: response.duration,
       });
     }
-    console.log(details);
+    console.log(response);
     updateAirport(true);
-    getTimeBeforeDeparture(details.departure_time, 3);
+    // getTimeBeforeDeparture(details.departure_time, 3);
   };
 
   const fetch_details_of_airport = async (data) => {
@@ -243,7 +243,8 @@ const Timeline = ({ data }) => {
         <>
           <TimelineItem
             title="Nearest Airport Details"
-            description={`The nearest airport is ${details.airport_name} at a distance of ${details.ariport_distance} and you can reach there in ${details.airport_time}`}
+            description={`
+              The airport is ${details.airport_name} at a distance of ${details.ariport_distance} and you can reach there in ${details.airport_time}`}
           ></TimelineItem>
           <TimelineItem
             title={`Documents Required`}
@@ -260,7 +261,7 @@ const Timeline = ({ data }) => {
           </TimelineItem>
           <TimelineItem
             title="Arrive at the Airport Early"
-            description={`Plan to arrive at least ${details.leavingtime} hours before your flight to allow enough time for check-in, security, and other procedures. For international flights, arriving earlier is advisable`}
+            description={`Plan to arrive at least 2-3 hours before your flight to allow enough time for check-in, security, and other procedures. For international flights, arriving earlier is advisable`}
           />
           <TimelineItem
             title="Locate Your Terminal"
