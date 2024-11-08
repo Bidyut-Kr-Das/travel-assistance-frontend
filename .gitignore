@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# packagelock.json
+package-lock.json
+*.pem
