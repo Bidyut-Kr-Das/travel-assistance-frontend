@@ -40,33 +40,33 @@ export const navigation = [
   {
     id: "0",
     title: "Aim",
-    url: "#features",
+    url: "http://localhost:3000/#features",
   },
   {
     id: "1",
     title: "Services",
-    url: "#pricing",
+    url: "http://localhost:3000/#how-to-use",
   },
   {
     id: "2",
-    title: "How to use",
-    url: "#how-to-use",
+    title: "pricing",
+    url: "http://localhost:3000/#pricing",
   },
   {
     id: "3",
     title: "About Us",
-    url: "#roadmap",
+    url: "http://localhost:3000/#how-to-use",
   },
   {
     id: "4",
     title: "Get started",
-    url: "#signup",
+    url: "http://localhost:3000/services",
     onlyMobile: true,
   },
   {
     id: "5",
     title: "Premium",
-    url: "#login",
+    url: "http://localhost:3000/#pricing",
     onlyMobile: true,
   },
 ];
